@@ -39,6 +39,11 @@ func (h ImageHandler) FindImage(name string) (*Image, error) {
 	return h.Store.FindImage(name)
 }
 
+// AllImages retrieves all images from h's Store.
+func (h ImageHandler) AllImages() ([]Image, error) {
+	return h.Store.AllImages()
+}
+
 // DeleteImage deletes the Image with the given name from h's Store.
 func (h ImageHandler) DeleteImage(name string) error {
 	return h.Store.DeleteImage(name)
