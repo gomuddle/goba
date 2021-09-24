@@ -48,6 +48,16 @@ func (g Goba) FindImage(typ DatabaseType, name string) (*Image, error) {
 	return nil, ErrNoSuchHandler
 }
 
+// AllImages retrieves all images with the given type.
+func (g Goba) AllImages(typ DatabaseType) ([]Image, error) {
+	for _, handler := range g.handlers {
+		if handler.Type() == typ {
+			return handler.AllImages()
+		}
+	}
+	return nil, ErrNoSuchHandler
+}
+
 // DeleteImage deletes the Image with the given type and name.
 func (g Goba) DeleteImage(typ DatabaseType, name string) error {
 	for _, handler := range g.handlers {
