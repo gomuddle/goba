@@ -12,6 +12,11 @@ type Store interface {
 	// a non-nil error.
 	FindImage(name string) (*Image, error)
 
+	// AllImages retrieves all images known to the Store.
+	// If there are no images to retrieve, AllImages should
+	// be a no-op.
+	AllImages() ([]Image, error)
+
 	// DeleteImage deletes the Image with the given name.
 	// If no such Image exists, DeleteImage should be a no-op.
 	DeleteImage(name string) error
